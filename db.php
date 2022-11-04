@@ -1,5 +1,5 @@
 <?php
-$serverName = 'localhost';
+$serverName = '192.168.1.23';
 $userName = 'root';
 $password = '';
 $databaseName = 'naira4dollar_database-project';

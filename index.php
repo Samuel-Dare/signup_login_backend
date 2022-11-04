@@ -20,10 +20,11 @@ $hash_password = password_hash($password, PASSWORD_BCRYPT);
 // die($hash);
 
 $duplicate = mysqli_query($conn, "SELECT * FROM users WHERE email = '$email' OR password = '$hash_password'");
-// if(mysqli_num_rows($duplicate) > 0)
-// {
-//   echo '<script> alert("email or password is already in use"); </script>';
-// }
+if(mysqli_num_rows($duplicate) > 0)
+{
+  echo "email or password is already in use";
+}
+else {
 if(password_verify($confirm_password, $hash_password)){
     $sql = 'INSERT INTO users SET firstname = ?, lastname = ?, email = ?, password = ?';
     $stmt = mysqli_stmt_init($conn);
@@ -34,6 +35,7 @@ if(password_verify($confirm_password, $hash_password)){
     mysqli_stmt_execute($stmt);
     }
     echo "registration is successful";
+}
 }
 else{
     echo "password does not match";
